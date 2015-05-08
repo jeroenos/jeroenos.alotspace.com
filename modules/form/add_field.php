@@ -29,7 +29,8 @@ $order = new order(TABLE_PREFIX.'mod_form_fields', 'position', 'field_id', 'sect
 $position = $order->get_new($section_id);
 
 // Insert new row into database
-$database->query("INSERT INTO ".TABLE_PREFIX."mod_form_fields (section_id,page_id,position,required) VALUES ('$section_id','$page_id','$position','0')");
+$database->query("INSERT INTO ".TABLE_PREFIX."mod_form_fields (section_id,page_id,position,required, value, extra) VALUES ('$section_id','$page_id','$position','0' ,'x', 'x')");
+
 
 // Get the id
 $field_id = $database->get_one("SELECT LAST_INSERT_ID()");
