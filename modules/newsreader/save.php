@@ -23,26 +23,10 @@
 
 require('../../config.php');
 
-// Include WB admin wrapper script
-require(WB_PATH.'/modules/admin.php');
-
-// suppress to print the header, so no new FTAN will be set
-$admin_header = false;
 // Tells script to update when this page was last updated
 $update_when_modified = true;
-
-
-if (method_exists($admin, "checkFTAN")) 
-{
-	if (!$admin->checkFTAN())
-	{
-		$admin->print_header();
-		$admin->print_error(
-			$MESSAGE['GENERIC_SECURITY_ACCESS'],
-			ADMIN_URL.'/pages/modify.php?page_id='.$page_id
-		);
-	}
-}
+// Include WB admin wrapper script
+require(WB_PATH.'/modules/admin.php');
 
 if(isset($_REQUEST['uri']) AND isset($_REQUEST['cycle'])) {
 	$uri = addslashes(trim($_REQUEST['uri']));
@@ -72,33 +56,37 @@ if(isset($_REQUEST['uri']) AND isset($_REQUEST['cycle'])) {
 	} else {
 		$coding_to = '--';
 	}
+	
+	$use_utf8_encode = isset($_REQUEST['use_utf8_encode']) ? 1 : 0;
 }
 
-if($_REQUEST['sqltype'] == 'UPDATE') {
-	$sqltype = 'UPDATE ';
-	$sqlwhere = "WHERE section_id = '$section_id'";
-} else {
-	$sqltype = 'INSERT INTO ';
-	$sqlwhere = '';
-}
 
 // save config
-$sqlquery = $sqltype . TABLE_PREFIX . "mod_newsreader SET 
-	section_id = '$section_id',
-	page_id = '$page_id',
-	uri = '$uri',
-	cycle = '$cycle',
-	show_image = '$show_image',
-	show_desc = '$show_desc',
-	show_limit = '$show_limit',
-	coding_from = '$coding_from',
-	coding_to = '$coding_to'
-	$sqlwhere";
+if($_REQUEST['sqltype'] == 'UPDATE') {
+	
+   $sqlquery = 'UPDATE '. TABLE_PREFIX . "mod_newsreader SET 
+                page_id = '$page_id',
+                uri = '$uri',
+                cycle = '$cycle',
+                show_image = '$show_image',
+                show_desc = '$show_desc',
+                show_limit = '$show_limit',
+                coding_from = '$coding_from',
+                coding_to = '$coding_to'
+                WHERE section_id = '$section_id'";	
+} else {
+    $sqlquery = 'INSERT INTO ' . TABLE_PREFIX . "mod_newsreader
+                ( section_id, page_id , uri, cycle, show_image, show_desc, show_limit, coding_from, coding_to, content ) 
+	            values 
+	            ( '$section_id','$page_id', '$uri', '$cycle', '$show_image', '$show_desc', '$show_limit'
+	            ,'$coding_from','$coding_to', 'x' )" ;	
+}
+
 $database->query($sqlquery);
 
 // get the newsfeed and save it
 include_once(WB_PATH . '/modules/newsreader/functions.php');
-update($uri, $section_id, $show_image, $show_desc, $show_limit, $coding_from, $coding_to);
+update($uri, $section_id, $show_image, $show_desc, $show_limit, $coding_from, $coding_to, $use_utf8_encode);
 
 if($database->is_error()) {
 	$admin->print_error(mysql_error() . " $sqlquery", $js_back);

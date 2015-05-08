@@ -134,10 +134,10 @@ class RSS_feed {
 		if ($i > 0) $this->limit = $i;
 	}
 
-	function Get_Results() {
+	function Get_Results( $use_utf8_encode=0 ) {
 		// When the properties have been set, then this function should
 		// be called. It will return the HTML unordered list.
-		$c = $this->contents;
+		$c = ($use_utf8_encode == 0) ? $this->contents : utf8_encode($this->contents);
 		
 		// Create the parser and set handlers.
 		$this->psr = xml_parser_create();
@@ -154,7 +154,7 @@ class RSS_feed {
 			xml_set_element_handler($this->psr, '_rdf_handle_open_element', '_handle_close_element');
 			break;
 		}
-		
+
 		// Set the handler for the cdata
 		xml_set_character_data_handler($this->psr, "_handle_character_data");
 		
@@ -165,7 +165,7 @@ class RSS_feed {
 			// This indicates a bad or malformed feed!
 			$ln =  xml_get_current_line_number($this->psr);
 			$msg =  xml_error_string(xml_get_error_code($this->psr));
-			return "An XML error occurred on line $ln: $msg";
+			return "**An XML error occurred on line $ln: $msg";
 		}
 		
 		// Free up the parser and clear memory

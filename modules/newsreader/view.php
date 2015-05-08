@@ -31,30 +31,31 @@ if(!defined('LANGUAGE')) {
 ////////////////////////////////////////////////////////////////////////
 
 $sqlquery = "SELECT uri, cycle, show_image, show_desc, show_limit, last_update, content,
-						  ch_title, ch_link, ch_desc, img_title, img_uri, img_link,
-						  coding_from, coding_to
-				 FROM ".TABLE_PREFIX."mod_newsreader WHERE section_id = '$section_id'";
+			ch_title, ch_link, ch_desc, img_title, img_uri, img_link,
+			coding_from, coding_to, use_utf8_encode
+			FROM ".TABLE_PREFIX."mod_newsreader WHERE section_id = '$section_id'";
+
 $sqlresult = $database->query($sqlquery);
 $sqlrow = $sqlresult->fetchRow( MYSQL_ASSOC );
 
 $last_update = $sqlrow['last_update'] + $sqlrow['cycle'];
 if (!defined('DATETIME')) define('DATETIME', DATE_FORMAT . ' ' . TIME_FORMAT);
 
-if($sqlrow['last_update'] == 0 || strlen($sqlrow['content']) == 0) {
-	output(update($sqlrow['uri'], $section_id, $sqlrow['show_image'], $sqlrow['show_desc'], $sqlrow['show_limit'], $sqlrow['coding_from'], $sqlrow['coding_to']));
-} elseif($last_update < time()) {
-	output(update($sqlrow['uri'], $section_id, $sqlrow['show_image'], $sqlrow['show_desc'], $sqlrow['show_limit'], $sqlrow['coding_from'], $sqlrow['coding_to']));
-} else {
-	output(array(
-		'ch_title' 		=> $sqlrow['ch_title'],
-		'ch_link' 		=> $sqlrow['ch_link'],
-		'ch_desc' 		=> $sqlrow['ch_desc'],
-		'img_title' 	=> $sqlrow['img_title'],
-		'img_uri' 		=> $sqlrow['img_uri'],
-		'img_link'	 	=> $sqlrow['img_link'],
-		'content' 		=> $sqlrow['content'],
-		'last_update' 	=> $sqlrow['last_update']
+if( ( ( $sqlrow['last_update'] == 0 || strlen($sqlrow['content']) == 0) ) || $last_update < time() ) {
+	output(
+		update(
+			$sqlrow['uri'],
+			$section_id,
+			$sqlrow['show_image'],
+			$sqlrow['show_desc'],
+			$sqlrow['show_limit'],
+			$sqlrow['coding_from'],
+			$sqlrow['coding_to'],
+			$sqlrow['use_utf8_encode']
 	));
+}
+else {
+	output( $sqlrow );
 }
 
 ?>

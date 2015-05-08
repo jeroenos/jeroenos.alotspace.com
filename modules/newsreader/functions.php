@@ -25,23 +25,21 @@ function output($nf) {
 	// view.php
 	/*
 	DESCRIPTION:
-	ch_title		= title of the newsfeed
+	ch_title	= title of the newsfeed
 	ch_link		= link to somewhere (normally the website of the newsfeed)
 	ch_desc		= description of the newsfeed
 	img_title	= title of the newsfeed image/logo
-	img_uri 		= URI to image/logo
-	img_link		= link to somewhere (normally the website of the newsfeed)
+	img_uri		= URI to image/logo
+	img_link	= link to somewhere (normally the website of the newsfeed)
 	last_update	= last db update of this newsfeed (UNIX time)
 	show_image	= show newsfeed image/logo (0|1)
 	show_desc	= show newsfeed item description (0|1)
 	*/
 
-	// i18n
-	$TEXT['LAST_UPDATED'] = 'last updated';
-	if(file_exists(WB_PATH . '/modules/newsreader/i18n/' . LANGUAGE . '.php')) {
-		include(WB_PATH . '/modules/newsreader/i18n/' . LANGUAGE . '.php');
-	} elseif(file_exists(WB_PATH . '/modules/newsreader/i18n/EN.php')) {
-		include(WB_PATH . '/modules/newsreader/i18n/EN.php');
+	if(file_exists(WB_PATH . '/modules/newsreader/languages/' . LANGUAGE . '.php')) {
+		require_once(WB_PATH . '/modules/newsreader/languages/' . LANGUAGE . '.php');
+	} else {
+		require_once(WB_PATH . '/modules/newsreader/languages/EN.php');
 	}
 
 	$out = '
@@ -49,14 +47,16 @@ function output($nf) {
 	<a href="' . $nf['img_link'] . '" alt="' . $nf['img_title'] . '" title="' . $nf['img_title'] . '" target="_blank"><img src="' . $nf['img_uri'] . '" alt="' . $nf['img_title'] . '" title="' . $nf['img_title'] . '" border="0" /></a>
 	<h2>' . $nf['ch_title'] . '</h2>
 	<div class="nr_description">' . $nf['ch_desc'] . '</div>
-	<div class="discreet">' . $TEXT['LAST_UPDATED'] . ': ' . date(DATETIME, $nf['last_update']) . '</div>
+	<div class="discreet">' . $MOD_NEWSREADER_TEXT['LAST_UPDATED'] . ': ' . date(DATETIME, $nf['last_update']+TIMEZONE) . '</div>
 	<div class="nr_content">' .	$nf['content'] .'</div>
 	</div>';
 	echo $out . "\n";
 }
 
-function update($uri, $section_id, $show_image, $show_desc, $show_limit, $coding_from, $coding_to) {
-	// view.php
+function update($uri, $section_id, $show_image, $show_desc, $show_limit, $coding_from, $coding_to, $use_utf8_encode=0) {
+	// called by view.php
+	global $database;
+	
 	include(WB_PATH . '/modules/newsreader/newsparser.php');
 	$nf = array();
 
@@ -71,7 +71,7 @@ function update($uri, $section_id, $show_image, $show_desc, $show_limit, $coding
 	$nf['show_desc'] = $show_desc;
 	
 	// get newsfeed contents
-	$nf['content'] = $px->Get_Results();
+	$nf['content'] = $px->Get_Results( $use_utf8_encode );
 	$nf['ch_title'] = $px->channel['title'];
 	$nf['ch_link'] = $px->channel['link'];
 	$nf['ch_desc'] = $px->channel['desc'];
@@ -91,29 +91,43 @@ function update($uri, $section_id, $show_image, $show_desc, $show_limit, $coding
 	// update db
 	$nf['last_update'] = time();
 
-// 05-05-2015, jdj
-        global  $database;
+	$fields = array(
+		'last_update'	=> $nf['last_update'],
+		'content'		=> $nf['content'],
+		'ch_title'		=> $nf['ch_title'],
+		'ch_link'		=> $nf['ch_link'],
+		'ch_desc'		=> $nf['ch_desc'],
+		'img_title'		=> $nf['img_title'],
+		'img_uri'		=> $nf['img_uri'],
+		'img_link'		=> $nf['img_link'],
+		'use_utf8_encode' => $use_utf8_encode
+	);
+	
+	if (method_exists( $database, "build_mysql_query") ) {
+		$q = $database->build_mysql_query(
+			'UPDATE',
+			TABLE_PREFIX . 'mod_newsreader',
+			$fields,
+			'section_id = '. $section_id
+		);
+		$statement = $database->db_handle->prepare( $q );
+		$statement->execute();
+	} else {
+		$sqlquery = 'UPDATE `' . TABLE_PREFIX . 'mod_newsreader` SET ';
+		if (method_exists( $database, "escapeString") ) {
+			foreach($fields as $key => $value) $sqlquery .= "`".$key."`='".$database->escapeString($value)."',";
+		} else {
+			foreach($fields as $key => $value) $sqlquery .= "`".$key."`='".@mysql_real_escape_string($value)."',";
+		} 
+		$sqlquery = substr($sqlquery, 0,-1)." WHERE `section_id` = '". $section_id ."'";
 
-      // $link =  $database->connect();
-
-	$sqlquery = 'UPDATE ' . TABLE_PREFIX . 'mod_newsreader
-                     SET last_update = "' . $nf['last_update'] . '"
-                     , content  = "'  . $nf['content']    . '"
-                     , ch_title = "'  . $nf['ch_title']   . '"
-                     , ch_link  = "'  . $nf['ch_link']    . '"
-                     , ch_desc  = "'  . $nf['ch_desc']    . '"
-                     , img_title = "' . $nf['img_title']  . '"
-                     , img_uri = "'   . $nf['img_uri']    . '"
-                     , img_link = "'   .$nf['img_link']   . '"
-		      WHERE section_id = "' . $section_id . '"';
-
-        $database->query($sqlquery);
-//	mysql_query($sqlquery);
+		$database->query($sqlquery);
+	}	
 	return $nf;
 }
 
 function readCharsets() {
-	// modify.php
+	
 	$dir = WB_PATH . '/modules/newsreader/ConvertTables';
 	$arrOptions = array('--');
 	if(! is_dir($dir)) {
@@ -154,7 +168,7 @@ function getLanguage() {
        	$i = array_merge($i, explode('_',$l));
 	}
 	foreach(array_unique($i) as $l)	{
-    	if(strlen($l) == 2 && file_exists('./i18n/'. strtoupper($l) . '.php')) {
+    	if(strlen($l) == 2 && file_exists('./languages/'. strtoupper($l) . '.php')) {
 			if(!defined('LANGUAGE')) {
 				define('LANGUAGE', strtoupper($l));
 			}

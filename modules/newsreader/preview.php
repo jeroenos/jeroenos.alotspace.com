@@ -26,49 +26,14 @@ if(!defined('NEWS_READER_LANGUAGE')) {
 	define('NEWS_READER_LANGUAGE', getLanguage());
 }
 
-// i18n
-$TEXT['RSS_URI'] = 'RSS-URI';
-$TEXT['CYCLE'] = 'Update-Cycle';
-$TEXT['LAST_UPDATED'] = 'last updated';
-$TEXT['SHOW_IMAGE'] = 'show Logo';
-$TEXT['SHOW_DESCRIPTION'] = 'show Description';
-$TEXT['MAX_ITEMS'] = 'max. Items';
-$TEXT['CODING'] = 'Coding';
-$TEXT['FROM'] = 'from';
-$TEXT['TO'] = 'to';
-$TEXT['Configuration'] = 'Configuration';
-$TEXT['Request'] = 'Request';
-$TEXT['Resource'] = 'Resource';
-$TEXT['Value'] = 'Value';
-$TEXT['Description'] = 'Description';
-$TEXT['Image-URI'] = 'Image-URI';
-$TEXT['Image-Title'] = 'Image-Title';
-$TEXT['Image-Link'] = 'Image-Link';
-$TEXT['Channel-Title'] = 'Channel-Title';
-$TEXT['Channel-Desc'] = 'Channel-Description';
-$TEXT['Channel-Link'] = 'Channel-Link';
-
-$MSG['RSS_URI'] = 'Weblink to the Newsfeed. Example: http://www.heise.de/newsticker/heise.rdf';
-
-$HEAD['CONFIG_DISPL'] = 'Output of the <u>saved</u> Configuration'; 
-
-$DESC['Image-URI'] = 'URI to the newsfeed image/logo';
-$DESC['Image-Title'] = 'Title of the newsfeed image/logo';
-$DESC['Image-Link'] = 'Link of the newsfeed image/logo. Mostly the URL of the newsfeed website';
-$DESC['Channel-Title'] = 'Title of the newsfeed';
-$DESC['Channel-Desc'] = 'Description of the newsfeed';
-$DESC['Channel-Link'] = 'Link of the newsfeed title. Mostly the URL of the newsfeed website';
-
-
-if(file_exists('./i18n/' . NEWS_READER_LANGUAGE . '.php'))
+if(file_exists('./languages/' . NEWS_READER_LANGUAGE . '.php'))
 {
-	include_once('./i18n/' . NEWS_READER_LANGUAGE . '.php');
+	include_once('./languages/' . NEWS_READER_LANGUAGE . '.php');
 }
-elseif(file_exists('./i18n/EN.php'))
+else
 {
-	include_once('./i18n/EN.php');
+	include_once('./languages/EN.php');
 }
-
 
 // create and set object newsfeed
 include_once('./newsparser.php');
@@ -83,9 +48,10 @@ $nf['show_image'] = $_REQUEST['SHOW_IMAGE'];
 $nf['show_desc'] = $_REQUEST['SHOW_DESCRIPTION'];
 $nf['coding_from'] = $_REQUEST['CODE_FROM'];
 $nf['coding_to'] = $_REQUEST['CODE_TO'];
+$nf['use_utf8_encoding'] = $_REQUEST['USE_UTF8ENCODE'];
 
 // get newsfeed contents
-$nf['content'] = $px->Get_Results();
+$nf['content'] = $px->Get_Results( $nf['use_utf8_encoding'] );
 $nf['ch_title'] = $px->channel['title'];
 $nf['ch_link'] = isset($px->channel['link']) ? $px->channel['link'] : "";
 $nf['ch_desc'] = $px->channel['desc'];
@@ -124,32 +90,32 @@ $out = '
  		</style>
 	</head>
 	<body>
-		<h1>' . $HEAD['CONFIG_DISPL'] . '</h1>
+		<h1>' . $MOD_NEWSREADER_HEAD['CONFIG_DISPL'] . '</h1>
 		<br />
 		<table width=100%>
 			<tr>
-				<th>' . $TEXT['Configuration'] . '</th>
-				<th>' . $TEXT['Request'] . '</th>
+				<th>' . $MOD_NEWSREADER_TEXT['Configuration'] . '</th>
+				<th>' . $MOD_NEWSREADER_TEXT['Request'] . '</th>
 			</tr>
 			<tr>
-				<td>' . $TEXT['RSS_URI'] . '</td>
+				<td>' . $MOD_NEWSREADER_TEXT['RSS_URI'] . '</td>
 				<td>' . $_REQUEST['RSS_URI'] . '</td>
 			</tr>
 			<tr>
-				<td>' . $TEXT['SHOW_IMAGE'] . '</td>
+				<td>' . $MOD_NEWSREADER_TEXT['SHOW_IMAGE'] . '</td>
 				<td>' . $_REQUEST['SHOW_IMAGE'] . '</td>
 			</tr>
 			<tr>
-				<td>' . $TEXT['SHOW_DESCRIPTION'] . '</td>
+				<td>' . $MOD_NEWSREADER_TEXT['SHOW_DESCRIPTION'] . '</td>
 				<td>' . $_REQUEST['SHOW_DESCRIPTION'] . '</td>
 			</tr>
 			<tr>
-				<td>' . $TEXT['MAX_ITEMS'] . '</td>
+				<td>' . $MOD_NEWSREADER_TEXT['MAX_ITEMS'] . '</td>
 				<td>' . $_REQUEST['MAX_ITEMS'] . '</td>
 			</tr>
 			<tr>
-				<td>' . $TEXT['CODING'] . '</td>
-				<td>' . $TEXT['FROM'] . ': ' . $_REQUEST['CODE_FROM'] . ' ' . $TEXT['TO'] . ': ' . $_REQUEST['CODE_TO'] . '</td>
+				<td>' . $MOD_NEWSREADER_TEXT['CODING'] . '</td>
+				<td>' . $MOD_NEWSREADER_TEXT['FROM'] . ': ' . $_REQUEST['CODE_FROM'] . ' ' . $MOD_NEWSREADER_TEXT['TO'] . ': ' . $_REQUEST['CODE_TO'] . '</td>
 			</tr>
 		</table>
 
@@ -157,44 +123,44 @@ $out = '
 
 		<table width=100%>
 			<tr>
-				<th>' . $TEXT['Resource'] . '</th>
-				<th>' . $TEXT['Value'] . '</th>
-				<th>' . $TEXT['Description'] . '</th>
+				<th>' . $MOD_NEWSREADER_TEXT['Resource'] . '</th>
+				<th>' . $MOD_NEWSREADER_TEXT['Value'] . '</th>
+				<th>' . $MOD_NEWSREADER_TEXT['Description'] . '</th>
 			</tr>
 			<tr>
-				<td>' . $TEXT['RSS_URI'] . '</td>
+				<td>' . $MOD_NEWSREADER_TEXT['RSS_URI'] . '</td>
 				<td>' . $px->URL . '</td>
-				<td>' . $MSG['RSS_URI'] . '</td>
+				<td>' . $MOD_NEWSREADER_MSG['RSS_URI'] . '</td>
 			</tr>
 			<tr>
-				<td>' . $TEXT['Image-URI'] . '</td>
+				<td>' . $MOD_NEWSREADER_TEXT['Image-URI'] . '</td>
 				<td>' . $nf['img_uri'] . '<br />'. (($nf['img_uri'] != "") ? '<img src="' . $nf['img_uri'] . '" />' : '') .'</td>
-				<td>' . $DESC['Image-URI'] . '</td>
+				<td>' . $MOD_NEWSREADER_DESC['Image-URI'] . '</td>
 			</tr>
 			<tr>
-				<td>' . $TEXT['Image-Title'] . '</td>
+				<td>' . $MOD_NEWSREADER_TEXT['Image-Title'] . '</td>
 				<td>' . $nf['img_title'] . '</td>
-				<td>' . $DESC['Image-Title'] . '</td>
+				<td>' . $MOD_NEWSREADER_DESC['Image-Title'] . '</td>
 			</tr>
 			<tr>
-				<td>' . $TEXT['Image-Link'] . '</td>
+				<td>' . $MOD_NEWSREADER_TEXT['Image-Link'] . '</td>
 				<td>' . $nf['img_link'] . '</td>
-				<td>' . $DESC['Image-Link'] . '</td>
+				<td>' . $MOD_NEWSREADER_DESC['Image-Link'] . '</td>
 			</tr>
 			<tr>
-				<td>' . $TEXT['Channel-Title'] . '</td>
+				<td>' . $MOD_NEWSREADER_TEXT['Channel-Title'] . '</td>
 				<td>' . $nf['ch_title'] . '</td>
-				<td>' . $DESC['Channel-Title'] . '</td>
+				<td>' . $MOD_NEWSREADER_DESC['Channel-Title'] . '</td>
 			</tr>
 			<tr>
-				<td>' . $TEXT['Channel-Desc'] . '</td>
+				<td>' . $MOD_NEWSREADER_TEXT['Channel-Desc'] . '</td>
 				<td>' . $nf['ch_desc'] . '</td>
-				<td>' . $DESC['Channel-Desc'] . '</td>
+				<td>' . $MOD_NEWSREADER_DESC['Channel-Desc'] . '</td>
 			</tr>
 			<tr>
-				<td>' . $TEXT['Channel-Link'] . '</td>
+				<td>' . $MOD_NEWSREADER_TEXT['Channel-Link'] . '</td>
 				<td>' . $nf['ch_link'] . '</td>
-				<td>' . $DESC['Channel-Link'] . '</td>
+				<td>' . $MOD_NEWSREADER_DESC['Channel-Link'] . '</td>
 			</tr>
 		</table>
 
@@ -220,7 +186,7 @@ $out .= '	<a href="' . $nf['img_link'] . '" alt="" title="' . $nf['img_title'] .
 }
 $out .='	<h2>' . $nf['ch_title'] . '</h2>
 	<div class="nr_description">' . $nf['ch_desc'] . '</div>
-	<div class="discreet">' . $TEXT['LAST_UPDATED'] . ': ' . date("Y-m-d H:i:s", time()) . '</div>
+	<div class="discreet">' . $MOD_NEWSREADER_TEXT['LAST_UPDATED'] . ': ' . date("Y-m-d H:i:s", time()) . '</div>
 	<div class="nr_content">' .
 		$nf['content'] .
 '	</div>

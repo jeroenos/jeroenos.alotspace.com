@@ -41,6 +41,7 @@ if(defined('WB_URL')) {
 		. ' `img_link` varchar(255) NOT NULL DEFAULT \'\','
 		. ' `coding_from` varchar(100) NOT NULL DEFAULT \'\','
 		. ' `coding_to` varchar(100) NOT NULL DEFAULT \'\','
+		. ' `use_utf8_encode` int(11) NOT NULL DEFAULT \'0\','
 		. ' PRIMARY KEY ( `section_id` ) )'
 		. ' ';
 	$database->query($sql);

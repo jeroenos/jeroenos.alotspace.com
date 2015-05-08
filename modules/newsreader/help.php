@@ -21,29 +21,10 @@
 
 */
 
-// i18n
-$TEXT['RSS_URI'] = 'RSS-URI';
-$TEXT['CYCLE'] = 'Update-Cycle';
-$TEXT['LAST_UPDATED'] = 'last updated';
-$TEXT['SHOW_IMAGE'] = 'show Logo';
-$TEXT['SHOW_DESCRIPTION'] = 'show Description';
-$TEXT['MAX_ITEMS'] = 'max. Items';
-$TEXT['CODING'] = 'Coding';
-$TEXT['FROM'] = 'from';
-$TEXT['TO'] = 'to';
-
-$MSG['RSS_URI'] = 'Weblink to the Newsfeed. Example: http://www.heise.de/newsticker/heise.rdf';
-$MSG['CYCLE'] = 'Actualization interval in seconds. Should not be smaller than 14400 Sec. (4 hours).';
-$MSG['LAST_UPDATED'] = 'Last actualization time of the Newsfeed.';
-$MSG['SHOW_IMAGE'] = 'If enabled, the Newsfeed logo will be displayed (if defined in the newsfeed).';
-$MSG['SHOW_DESCRIPTION'] = 'If enabled, the description of each news-item will be displayed (if included in the newsfeed)';
-$MSG['MAX_ITEMS'] = 'maximum numbers of news items to display. Normaly, newsfeeds have no more than 15 items.';
-$MSG['CODING'] = 'Coding of a Newsfeed. Sample: If the Newsfeed is UTF-8 coded and your Website is running with ISO-8859-1, please choose "from" utf-8 and "to" iso-8859-1.';
-
-if(file_exists('./i18n/' . $_REQUEST['lang'] . '.php')) {
-	include('./i18n/' . $_REQUEST['lang'] . '.php');
-} elseif(file_exists('./i18n/EN.php')) {
-	include('./i18n/EN.php');
+if(file_exists('./languages/' . $_REQUEST['lang'] . '.php')) {
+	include('./languages/' . $_REQUEST['lang'] . '.php');
+} else {
+	include('./languages/EN.php');
 }
 
 // output
@@ -52,14 +33,25 @@ $out = '
 	<head>
 		<title>WB Newsreader Info</title>
 		<style type="text/css">
+			table {
+				font-family: Verdana, sans-serif;
+				font-size: 12px;
+				line-height: 1.3 em;
+				width: 100%;
+			}
 			#colone {
 				font-weight: bold;
-				background-color: #336699;
+				background-color: #009900;
 				color: #FFFFFF;
+				width: 200px;
+				padding-left: 10px;
+				height: 20px;
 			}
 			#coltwo {
-				background-color: #336699;
-				color: #FFFFFF;
+				background-color: #DDDDDD;
+				color: #000000;
+				padding-left: 10px;
+				height: 20px;
 			}
 		</style>
 	</head>
@@ -69,34 +61,38 @@ echo $out;
 
 $out = '
 <body>
-	<table width=100%>
+	<table>
 		<tr>
-			<td id="colone">' .$TEXT['RSS_URI']. '</td>
-			<td id="coltwo">' .$MSG['RSS_URI']. '</td>
+			<td id="colone">' .$MOD_NEWSREADER_TEXT['RSS_URI']. '</td>
+			<td id="coltwo">' .$MOD_NEWSREADER_MSG['RSS_URI']. '</td>
 		</tr>
 		<tr>
-			<td id="colone">' .$TEXT['CYCLE']. '</td>
-			<td id="coltwo">' .$MSG['CYCLE']. '</td>
+			<td id="colone">' .$MOD_NEWSREADER_TEXT['CYCLE']. '</td>
+			<td id="coltwo">' .$MOD_NEWSREADER_MSG['CYCLE']. '</td>
 		</tr>
 		<tr>
-			<td id="colone">' .$TEXT['LAST_UPDATED']. '</td>
-			<td id="coltwo">' .$MSG['LAST_UPDATED']. '</td>
+			<td id="colone">' .$MOD_NEWSREADER_TEXT['LAST_UPDATED']. '</td>
+			<td id="coltwo">' .$MOD_NEWSREADER_MSG['LAST_UPDATED']. '</td>
 		</tr>
 		<tr>
-			<td id="colone">' .$TEXT['SHOW_IMAGE']. '</td>
-			<td id="coltwo">' .$MSG['SHOW_IMAGE']. '</td>
+			<td id="colone">' .$MOD_NEWSREADER_TEXT['SHOW_IMAGE']. '</td>
+			<td id="coltwo">' .$MOD_NEWSREADER_MSG['SHOW_IMAGE']. '</td>
 		</tr>
 		<tr>
-			<td id="colone">' .$TEXT['SHOW_DESCRIPTION']. '</td>
-			<td id="coltwo">' .$MSG['SHOW_DESCRIPTION']. '</td>
+			<td id="colone">' .$MOD_NEWSREADER_TEXT['SHOW_DESCRIPTION']. '</td>
+			<td id="coltwo">' .$MOD_NEWSREADER_MSG['SHOW_DESCRIPTION']. '</td>
 		</tr>
 		<tr>
-			<td id="colone">' .$TEXT['MAX_ITEMS']. '</td>
-			<td id="coltwo">' .$MSG['MAX_ITEMS']. '</td>
+			<td id="colone">' .$MOD_NEWSREADER_TEXT['MAX_ITEMS']. '</td>
+			<td id="coltwo">' .$MOD_NEWSREADER_MSG['MAX_ITEMS']. '</td>
 		</tr>
 		<tr>
-			<td id="colone">' .$TEXT['CODING']. '</td>
-			<td id="coltwo">' .$MSG['CODING']. '</td>
+			<td id="colone">' .$MOD_NEWSREADER_TEXT['CODING']. '</td>
+			<td id="coltwo">' .$MOD_NEWSREADER_MSG['CODING']. '</td>
+		</tr>
+		<tr>
+			<td id="colone">' .$MOD_NEWSREADER_TEXT['USE_UTF8_ENCODING']. '</td>
+			<td id="coltwo">' .$MOD_NEWSREADER_MSG['USE_UTF8_ENCODING']. '</td>
 		</tr>
 	</table>
 </body>
