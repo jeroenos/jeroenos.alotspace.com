@@ -1,0 +1,8 @@
+<!-- name: flickr.com.linear -->
+<link href="{LIB_URL}/libraryadmin/assets/css_dropdown_framework/themes/flickr.com/helper.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="{LIB_URL}/libraryadmin/assets/css_dropdown_framework/dropdown.linear.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="{LIB_URL}/libraryadmin/assets/css_dropdown_framework/themes/flickr.com/default.ultimate.linear.css" media="screen" rel="stylesheet" type="text/css" />
+<!--[if lt IE 7]>
+<script type="text/javascript" src="{LIB_URL}/libraryadmin/assets/css_dropdown_framework/js/jquery/jquery.js"></script>
+<script type="text/javascript" src="{LIB_URL}/libraryadmin/assets/css_dropdown_framework/js/jquery/jquery.dropdown.js"></script>
+<![endif]-->

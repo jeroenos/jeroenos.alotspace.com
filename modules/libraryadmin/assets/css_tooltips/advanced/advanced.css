@@ -1,0 +1,9 @@
+@import url(simple.css); 
+.tooltip:hover img {
+  border: 0;
+  margin: -10px 0 0 -55px;
+  float: left;
+  position: absolute;
+}
+
+

@@ -1,0 +1,7 @@
+<script type="text/javascript">
+  window.onload = function () {
+    REDIPS.dialog.init();          // initialize dialog
+    REDIPS.dialog.op_high = 40;    // set maximum transparency to 40%
+    REDIPS.dialog.fade_speed = 18; // set fade spead (delay is 18ms)
+  };
+</script>

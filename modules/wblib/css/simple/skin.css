@@ -1,0 +1,24 @@
+/*
+    wbFormBuilder Simple Skin
+*/
+
+@import url(../formbuilder_default.css);
+
+form.fbform, form.fbform input, form.fbform select, form.fbform textarea {margin:0;padding:0;}
+form.fbform fieldset{border:0;}
+form.fbform ol{border-top:1px solid #aaa;}
+form.fbform li.fbtypecheckbox div{margin-left:170px;}
+form.fbform label.fblabel, form.fbform span.fblabel{width:200px;margin-right:auto;display:inline-block;}
+input.fbtext,input.fbfile,input.fbpassword,select.fbselect,select.fbmultiselect,textarea.fbtextarea{width:370px;}
+form.fbform li.fbtypecheckbox input.fbcheckbox{margin-left:230px;}
+form.fbform .fbbuttonpane{border-top:1px solid #aaa;padding-top:25px;}
+form.fbform div.jqte {float:none !important; margin: 0 374px 5px 0 !important;border-color: #aaa !important;}
+form.fbform div.jqte .jqte_tool_label {height:24px !important;}
+form.fbform div.jqte .jqte_source {min-height:15px !important;}
+
+/*
+fieldset.fbfieldset li.fbtypecheckbox span.fbrequired,fieldset.fbfieldset li span span {float:none;}
+form.fbform li.fbtypecheckbox span.fblabel{float:none;}
+form.fbform .fbrequired{background-image:url();}
+form.fbform fieldset.fbfieldset li.fbtypecheckbox span{margin-right: -25px;}
+*/

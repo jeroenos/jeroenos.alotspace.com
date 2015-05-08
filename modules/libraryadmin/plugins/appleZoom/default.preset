@@ -1,0 +1,4 @@
+<link rel="stylesheet" media="screen" type="text/css" href="{WB_URL}/modules/libraryadmin/plugins/appleZoom/appleZoom.css" />
+<!-- position: body -->
+<script type="text/javascript" src="{WB_URL}/modules/libraryadmin/plugins/appleZoom/script.js"></script>
+

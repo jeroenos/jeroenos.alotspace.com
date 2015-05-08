@@ -1,0 +1,203 @@
+html {height:100%;}
+body {
+	margin: 0; padding: 0; 
+	height:100%;
+	background: #598bba url(images/bodybg.jpg)  no-repeat fixed left top;
+	-o-background-size: 100% auto, auto;
+	-moz-background-size: 100% auto, auto;
+	-webkit-background-size: 100% auto, auto;
+	background-size: 100% auto, auto;
+}
+
+.container {
+	max-width: 920px;
+    width: 86%;
+	min-height:100%;    
+    margin: 0 auto;
+	background:transparent url(images/bg30.png);
+	border-left:1px solid #c9e8f9;
+	border-right:1px solid #9ccae3;
+	
+	
+}
+
+.header { width: 100%; background:transparent url(images/headerbg.png) repeat-x; }
+.header img.headerpic  {max-width:100%; float:right; }
+.header .infobox {position:absolute; top:10px; left: 15px; width: 60%; height:90%; overflow:hidden;}
+.header .infobox a, .header .infobox h3 {color:#fff; font-weight:normal;}
+.header .infobox h3 {font-size:0.95em; line-height:130%;}
+
+
+
+.mainbox {margin: 20px 2% 20px 2%; background-color:#0ff;}
+
+.contentbox {width: 68%; float:left; background:transparent url(images/bg50.png);}
+.contentbox .inner {min-height:330px; padding:0 5px 0 10px; background:transparent url(images/rundbg.png) no-repeat right top; }
+.rightbox {width: 30%; float:right; }
+.rightbox .inner {padding:0 5px 0 5px;}
+
+#contentwide {width: 100%; }
+
+.footer {
+    width: 86%;	
+    max-width: 920px;
+	height:70px;
+    margin: -60px auto 0 auto;
+	position:relative;
+}
+
+.footer .footerpic {width:100%; height:100%;}
+
+.footer .inner { position:absolute; top:10px; left: 10%; width:80%; font-size:0.8em; text-align:center; line-height:110%;  color: #fff ! important}
+.footer .inner span { font-size:0.7em;}
+
+
+
+.clearer {height:80px; clear:both;}
+
+
+.rightbox.inner h1, .rightbox .inner h2 {color: #fff ! important}
+.rightbox .inner h3 {color: #fff ! important}
+.rightbox .inner  {color: #fff ! important}
+
+
+/***********************************
+	header-menu
+************************************/
+
+a#mobilemenu {
+    display:  none;   
+}
+a#mobilemenu span {display:block; padding: 10px 15px ; font-weight: bold;}
+
+
+
+
+.topmenubar {background-color:#4577a8; width:100%; clear:both;}
+.breadcrumbs {padding:5px 5px 4px 15px; clear:both; background:transparent url(images/bg50.png)}
+
+.search_box {float:right;  width:130px; text-align:right; margin-top:3px;}
+.search_box .searchstring {	
+	width:80px;
+	border: 1px solid #505567;
+	background-color: #f2f3f8;
+	font-size:12px;
+	padding:2px;
+}
+.search_box .submitbutton {
+	vertical-align: top; margin:0 0 0 0; 
+}
+
+#showlogin {display:block; float:right; position:relative;  width:30px; text-align:right; margin-top:3px; }
+#login-box {position:absolute; width:200px; left:-190px; top:25px; padding:10px; font-size:11px; background:transparent url(images/bg75.png);}
+#login-box .inputfield {width:80px; border: 1px solid #c9e8f9; padding:1px;}
+.printbutton  {display:block; float:right; margin-right:5px;}
+
+.childpages {width: 27%; float:right; min-width:200px; margin-right:3%; background:transparent url(images/bg30.png);}
+
+
+/* Link Formatting */
+ul.nav { 
+	list-style-type: none;
+	/* *zoom: 1; */
+	margin: 0; padding: 0;
+	position: relative; 	
+}
+
+ul.nav li {
+	float: left; 
+	list-style-type: none;
+	list-style-image: none;
+	position: relative;  
+	font-weight: normal; 	
+	margin: 0; padding: 0;
+	border-right: 1px solid #fff;
+	background-color:#17396e;
+}
+ul.nav li li {background-color:#35588e;}
+ul.nav li li li {background-color:#557cac;}
+
+.nav li a {
+	display: block; 	
+	text-decoration: none; 
+	font-weight: bold;
+	line-height:120%;
+	/*text-shadow: 1px 1px 1px #000;*/
+	padding: 8px 10px;
+    color:#fff;
+
+}
+
+
+/* Hover Formatting */
+.nav  li a:hover, .nav li a:focus, .nav li a:active, .nav li a.active, .nav a.menu-current, .nav a.menu-parent {
+	 background-color: #68accf;  color: #000;
+}
+
+
+
+/* 2 level */
+.nav li ul {
+	background: none;
+    display: none;
+    width: 13em; 
+    margin: 0; padding:0;
+    position: absolute;
+}
+
+.nav li ul li {
+	width: 13em; 
+	text-align: left; 
+	font-weight: normal; 
+	margin: 0; 
+	padding: 0;
+	border-top: 1px solid #fff;
+	border-right: none;
+}
+.nav li ul li a {
+	
+    color: #fff;
+    font-weight: normal;
+	padding: 6px 10px;
+    
+}
+
+
+/* 2 level hover */
+.nav li ul a:hover,  .nav li ul a.menu-current { background-color: #68accf;  color: #000;}
+
+
+/* Show and hide */
+.nav li:hover ul, .nav li a:focus ul {display: block; }
+.nav li ul ul { display: none;}
+.nav li:hover ul ul {display: none;}
+.nav li:hover>ul, .nav  li li:hover>ul {display: block;  z-index: 1000;}
+
+
+/* 3 Ebene  */
+.nav li ul li ul	{ 
+	margin: -20px 0 0 70%; 
+	padding:0;
+	z-index: 9999;  
+	display: none;
+	width: 11em; 
+}
+.nav li ul li ul li	{width: 11em;}
+
+
+/* Positioning hover */
+.nav li {position: relative;}
+
+
+
+.nav li:hover {
+	z-index: 10000;	
+	white-space: normal;
+							
+}
+
+
+ul.nav li.ulend {height:10px; background: transparent url(images/ulend.png) repeat-x;}
+ul.nav > li.ulend {display:none ! important;}
+
+ul.nav a.menu-parent { color: #000; background-color: #68accf;}

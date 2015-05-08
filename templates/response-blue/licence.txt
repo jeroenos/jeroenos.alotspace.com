@@ -1,0 +1,27 @@
+  
+Template Lizenz für response blue
+
+Creative Commons Attribution Licence 3.0
+
+Short: You may remove the footerlink, if you set a link to http://www.beesign.at/ somewhere visible on your page.
+For example at the imprint ("based on a design by <a href="http://www.beesign.at" target="_blank">Chio Maisriml</a>")
+
+***********************************************************************************************************************
+
+Sie dürfen das Template nach Ihren Geschmack und nach Belieben anpassen und ändern.
+Auf mangen untergeordneten Seiten erscheint ein dezenter Hinweis auf den Urheber beesign.at mitsamt Link.
+
+Gerne können Sie den entsprechenden PHP-Code entfernen 
+und _stattdessen_ im Impressum (vorzugsweise) einen analogen Hinweis + Link auf www.beesign.at setzen.
+Wenn Sie finden, dass Ihre Änderungen sehr weitgehend sind, kann der Hinweis auch abgeändert werden zu:
+Design von XXX
+Basierend auf einem Konzept von <a href="http://www.beesign.at" target="_blank">beesign - grafiker in wien</a>
+
+
+Mit dieser Lizenz erwirbt der Nutzer und Lizenznehmer kein geistiges Eigentumsrecht an dem Template.
+Das Template ist in allen Bestandteilen geistiges Eigentum des Lizenzgebers und unterliegt dem 
+gesetzlich geregelten Urheberrecht sowie der Creative Commons Attribution Licence 3.0 / 
+http://creativecommons.org/licenses/by/3.0/deed.de
+
+***********************************************************************************************************************
+

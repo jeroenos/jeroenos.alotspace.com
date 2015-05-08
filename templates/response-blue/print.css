@@ -1,0 +1,8 @@
+.container, .footer {width:100%;}
+#mobilemenu, .topmenubar, #mobilemenu {display: none ! important; }
+
+html, body, .container, .header,  .mainbox, .contentbox, .contentbox .inner {background-image: none ! important;}
+body, html {background-color: #fff ! important;}
+.contentbox .inner, .rightbox .inner, .footer .inner, .infobox h3 {color: #000! important;}
+
+h1, h2 {text-shadow: none ! important; }

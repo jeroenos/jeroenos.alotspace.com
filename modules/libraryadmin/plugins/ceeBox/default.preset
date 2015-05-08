@@ -1,0 +1,6 @@
+<link rel="stylesheet" href="{WB_URL}/modules/jqueryadmin/plugins/ceeBox/css/ceebox-min.css" type="text/css" media="screen" charset="utf-8" />
+<script src="{WB_URL}/modules/jqueryadmin/jquery-ui/external/jquery.metadata.js" type="text/javascript" charset="utf-8"></script>
+<script src="{WB_URL}/modules/jqueryadmin/plugins/Easing/jquery.easing.js" type="text/javascript" charset="utf-8"></script>
+<script src="{WB_URL}/modules/jqueryadmin/plugins/ceeBox/js/jquery.color.js" type="text/javascript" charset="utf-8"></script>
+<script src="{WB_URL}/modules/jqueryadmin/plugins/ceeBox/js/jquery.swfobject.js" type="text/javascript" charset="utf-8"></script>
+<script src="{WB_URL}/modules/jqueryadmin/plugins/ceeBox/js/jquery.ceebox-min.js" type="text/javascript" charset="utf-8"></script>

@@ -1,0 +1,2 @@
+    <script type="text/javascript" src="{LIB_URL}/libraryadmin/plugins/lytebox/lytebox.js"></script>
+    <link rel="stylesheet" href="{LIB_URL}/libraryadmin/plugins/lytebox/lytebox.css" type="text/css" />

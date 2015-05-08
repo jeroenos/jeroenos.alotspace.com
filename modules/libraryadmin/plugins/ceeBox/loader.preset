@@ -1,0 +1,41 @@
+<!-- position: body -->
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(
+    function() {
+      $(".ceebox").ceebox({
+        html:true, // set to false to turn off html popups
+        image:true,
+        video:true,
+        modal:false, // if set to true all ceebox links are modal (unless you add modal:false in the rel)
+        titles: true, //set to false if you don't want titles/captions
+        htmlGallery:true, // set to false to turn of gallery functionality for html popups
+        imageGallery:true,
+        videoGallery:true,
+        videoWidth: false, // set max width for all video links
+        videoHeight: false,
+        videoRatio: "16:9", // common ratios are included 4:3, 3:2, 16:9, or  ratio can also be set to a decimal amount (i.e., 3:2 is the same as 1.5)
+        htmlWidth: false, //set max width for all html links
+        htmlHeight: false,
+        htmlRatio: false,
+        imageWidth: false, //set max size for all image links (image ratio is determined by the image itself)
+        imageHeight: false,
+        animSpeed: "normal", // animation resize transition speed (can be set to "slow","normal","fast", or in milliseconds like 1000)
+        easing: "swing", // can be set to "linear" - also supports use of the easing plugin for resize anim
+        fadeOut: 400, // speed that ceebox fades out when closed or advancing through galleries (same as animSpeed)
+        fadeIn: 400, // speed that ceebox fades in when opened or advancing through galleries
+        overlayColor:"#000", // color of the overlay
+        overlayOpacity:0.8,
+        boxColor:"", //background color for ceebox. This overrides css styles. This and the next two options are really only useful in combination with the color animation plugin-if you are changing globally just set it in the CSS
+        textColor:"", //color for text in ceebox. This overrides css styles
+        borderColor:"", //outside border color. This overrides css styles. Note: ONLY use hex values! Varying colors can be set like css (ie, "#aaa #666")
+        padding: 15, //ceebox popup padding. Single value only
+        borderWidth: "3px", //the border width on ceebox. Varying widths can be set like css (ie, "4px 2px") (color and style controled in css file)
+        margin: 150, //margin between ceebox content and browser frame (used for max size)
+        onload:null, //callback function once ceebox popup is fully loaded
+        unload:null, //callback function once ceebox popup is fully unloaded (ie closed)
+        videoJSON:null, //file url for adding video support via JSON.(see Adding More Video Support below)
+        iPhoneRedirect:true//detects iPhone/iPod Touch and redirects all video popups to video site (this allows youtube links to open in youtube player)
+      });
+    }
+  );
+</script>

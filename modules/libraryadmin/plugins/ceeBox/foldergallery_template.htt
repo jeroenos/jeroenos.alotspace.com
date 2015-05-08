@@ -1,0 +1,41 @@
+<div class="gallery">
+  <div class="gallerytitel">
+    <h1>{VIEW_TITLE} <span class="titel">{CATEGORIES_TITLE} {CAT_DESCRIPTION}&nbsp;</span></h1>
+  </div>
+<!--
+  <div class="backlink">
+    <a href="{BACK_LINK}" {HIDDEN}>{BACK_STRING}</a>
+  </div>
+-->
+</div>
+<!-- BEGIN error -->
+{FRONT_END_ERROR_STRING}<br />
+<!-- END error -->
+<div class="pagenav" style="text-align: left">{CATBREAD}</div>
+<div class="foldergallery-wrapper">
+<!-- BEGIN categories -->
+<!-- BEGIN show_categories -->
+<div class="catthumbwrapper">
+  <table class="thumbnail" cellspacing="0" ><tr><td><a href="{CAT_LINK}"><img src="{THUMB_LINK}" alt=""/></a></td></tr></table>
+  <div class="cat-caption"><a href="{CAT_LINK}"><span >{CAT_CAPTION}</a></div>
+</div>
+<!-- END show_categories -->
+<!-- END categories -->
+
+<!-- BEGIN hr -->
+<hr class="clear" />
+<!-- END hr -->
+
+<div class="ceebox">
+<!-- BEGIN images -->
+<!-- BEGIN thumbnails -->
+  <a href="{ORIGINAL}" title="{CAPTION}" rel="image"><img src="{THUMB}" alt="{CAPTION}"/></a>
+<!-- END thumbnails -->
+<!-- END images -->
+</div>
+
+<br style="clear:both" />
+<!-- BEGIN pagenav -->
+<div class="fgpagenav">{PAGE}:&nbsp;{PAGE_NAV}</div>
+<!-- END pagenav -->
+</div>

@@ -1,0 +1,6 @@
+.footer {display:none;}
+#menu a.menu-current, #menu a:hover {background-image:none}
+.container { width: 920px; background-image: none; background-color: #8eafd1;}
+.contentbox .inner { background-image: none; background-color: #c5d7e7;}
+
+ul.nav { zoom: 1; }

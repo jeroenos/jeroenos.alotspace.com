@@ -1,0 +1,15 @@
+.tv_open{
+    background: transparent url(down.png) no-repeat left top;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+}
+
+.tv_closed{
+    background: transparent url(right.png) no-repeat left top;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+}

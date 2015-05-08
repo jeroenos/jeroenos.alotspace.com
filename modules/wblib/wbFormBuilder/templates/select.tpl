@@ -1,0 +1,3 @@
+    <select {{ attributes }}{{ :if tooltip }} title="{{ tooltip }}"{{ :ifend }}>
+    {{ :if options }}{{ :loop options }}<option value="{{ key }}" {{ selected }}>{{ value }}</option>{{ :loopend }}{{ :else }}{{ :comment The content can be given pre-rendered, using wbListBuilder, for example }}{{ content }}{{ :ifend }}
+    </select>

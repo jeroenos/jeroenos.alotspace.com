@@ -1,0 +1,52 @@
+
+body { background-image: url(images/bodybgmobile.jpg); }
+
+.search_box {margin-top:-30px;}
+.printbutton, #showlogin {display:none;}
+
+.header .infobox {top:0;}
+.header .infobox h1 {font-size:1.4em; line-height:100%;}
+.header .infobox h2 {font-size:1.1em; line-height:100%;}
+.header .infobox h3 {display:none}
+
+
+
+a#mobilemenu { 
+	display:  block;  
+	background: #4577a8;   
+	color: #fff;
+	width:100%;
+}
+
+ul#mobile, ul#mobile ul, ul#mobile ul ul {width:100% ! important; position: static ! important; margin: 0 0 0 0 ! important; display: none}
+ul#mobile li, ul#mobile li li, ul#mobile li li li {
+	float: none;
+	border-right: none; 
+	width:100%  ! important;
+	display: block;
+	border-bottom: 1px solid #fff;
+}
+
+
+ul#mobile li.menu-parent > ul, ul#mobile li.menu-current > ul {display: block}
+ul#mobile {display: block}
+
+ul#mobile a.menu-parent { color: #fff; background-color: #68cecf;}	
+#mobile a.menu-parent { color: #000;}
+#mobile a.menu-expand {
+	background-image: url("images/downArrow.png");
+	background-repeat: no-repeat;
+	background-position: right 50%;
+}
+
+ul#mobile {display:none;}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.container { width: 96%; }
+
+.mainbox {margin: 20px 0 20px 0;}
+.contentbox {width: 100%;}
+.rightbox {display:none;}
+.footer { width: 96%; }
+
+.showonmobiles {display:block ! important;}
+

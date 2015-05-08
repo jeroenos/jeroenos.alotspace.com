@@ -1,0 +1,14 @@
+/*******************************************************************************
+    This gets autoloaded in Lepton only, so it contains some fixes
+*******************************************************************************/
+#libadmin {line-height:0.5em;}
+#libadmin #outer{width:98%;}
+#libadmin #tabs li {padding: 18px 6px 16px;line-height:0.5em;}
+#libadmin li, #libadmin li span {vertical-align:top;}
+#libadmin li {line-height:1.7em;}
+#libadmin li span {padding-top:5px;}
+#libadmin textarea,#libadmin input[type="text"],#libadmin input[type="password"] {display:inline-block;}
+#libadmin #version {line-height:1.5em;}
+#libadmin input{min-height:1em;}
+#libadmin .libinfo, #libadmin .libname{line-height:2em;}
+#libadmin #rightalign{width:80%;}

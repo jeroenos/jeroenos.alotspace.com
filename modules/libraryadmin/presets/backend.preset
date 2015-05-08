@@ -1,0 +1,17 @@
+<!-- position: head -->
+    <script type="text/javascript" src="{LIB_URL}/libraryadmin/plugins/lytebox/lytebox.js"></script>
+    <link rel="stylesheet" href="{LIB_URL}/libraryadmin/plugins/lytebox/lytebox.css" type="text/css" />
+<!-- position: head -->
+<script type="text/javascript" src="{LIB_URL}/libraryadmin/plugins/modaldbox/redips-dialog-min.js"></script>
+<link rel="stylesheet" href="{LIB_URL}/libraryadmin/plugins/modaldbox/redips-dialog.css" type="text/css" /><!-- position: head -->
+<script type="text/javascript">
+  window.onload = function () {
+    REDIPS.dialog.init();          // initialize dialog
+    REDIPS.dialog.op_high = 40;    // set maximum transparency to 40%
+    REDIPS.dialog.fade_speed = 18; // set fade spead (delay is 18ms)
+  };
+</script><!-- position: head -->
+<link rel="stylesheet" type="text/css" href="{LIB_URL}/libraryadmin/plugins/toggle/tv.css" />
+<script type="text/javascript" src="{LIB_URL}/libraryadmin/plugins/toggle/toggle.js"></script>
+<!-- position: head -->
+<link media="screen" rel="stylesheet" type="text/css" href="{LIB_URL}/libraryadmin/assets/css_tooltips/bubble/bubble.css" />

@@ -1,0 +1,46 @@
+/*******************************************************************************
+    wbFormBuilder basic CSS
+*******************************************************************************/
+
+@import url(../js/cleditor/jquery.cleditor.css);
+
+form.fbform fieldset.fbfieldset{margin:15px auto;}
+form.fbform fieldset.fbfieldset legend.fblegend{font-weight:700;}
+form.fbform fieldset.fbfieldset ol{list-style:none;padding:1em 1em 0;}
+form.fbform fieldset.fbfieldset li{float:left;width:100%;padding-bottom:1em;text-align:left;list-style:none;}
+form.fbform fieldset.fbfieldset li span.fbspan20{width:20px;height:20px;min-height:20px;display:block;float:left;padding:2px;}
+form.fbform fieldset.fbfieldset li span span{padding:0;margin-top:-5px;}
+form.fbform fieldset.fbfieldset li span.fbinfotext{height:auto;}
+form.fbform fieldset.fbfieldset li span.fberror,form.fbform fieldset.fbfieldset li span.fbinfotext{padding-left:5px;width:auto;border:0;}
+form.fbform .fberror{color:#C00;border:1px solid #c00;padding:5px;}
+form.fbform div.fberror,form.fbform div.fbinfo{text-align:center;margin-bottom:15px;padding:10px;}
+form.fbform div.fbinfo{border:1px solid #060;}
+form.fbform label.fblabel,form.fbform span.fblabel{font-weight:700;display:block;float:left;width:20em;margin-right:1em;text-align:right;}
+form.fbform input.fbtext,form.fbform input.fbpassword,form.fbform span.fbinfotext,form.fbform select.fbselect,form.fbform select.fbmultiselect,form.fbform textarea.fbtextarea{border:1px solid #ccc;padding:3px;}
+form.fbform input.fbsubmit{border:1px solid #ccc;}
+form.fbform select.fbmultiselect{max-height:100px;}
+form.fbform span.fbinfotext{border:none;}
+form.fbform input.fbdisabled,form.fbform textarea.fbdisabled{border:0 !important;background-color:transparent;}
+form.fbform .fbicon{min-height:20px;vertical-align:middle;margin:20px auto;}
+form.fbform .fbrequired{background:transparent url(required.png) no-repeat center left;padding-left:30px;font-weight:700;}
+/*******************************************************************************
+    Password Strength Meter
+*******************************************************************************/
+form.fbform div.passwordStrengthDiv{margin-top:5px;margin-left:20em;padding-left:20px;}
+form.fbform div.passwordStrengthDiv span{float:right;line-height:5px;}
+form.fbform .is0{background:url(progressImg1.png) no-repeat 0 0;width:220px;height:7px;}
+form.fbform .is10{background-position:0 -7px;}
+form.fbform .is20{background-position:0 -14px;}
+form.fbform .is30{background-position:0 -21px;}
+form.fbform .is40{background-position:0 -28px;}
+form.fbform .is50{background-position:0 -35px;}
+form.fbform .is60{background-position:0 -42px;}
+form.fbform .is70{background-position:0 -49px;}
+form.fbform .is80{background-position:0 -56px;}
+form.fbform .is90{background-position:0 -63px;}
+form.fbform .is100{background-position:0 -70px;}
+form.fbform .fbtypepassword .poor{color:#f00;}
+form.fbform .fbtypepassword .weak{color:#CC6600;}
+form.fbform .fbtypepassword .ok{color:#00CC99;}
+form.fbform .fbtypepassword .good{color:#009900;}
+form.fbform .fbtypepassword .strong{color:#009900;font-weight:bold;}
