@@ -36,6 +36,8 @@ if($admin->get_permission('admintools') == true) {
 	$sql .= '`active` = 1, ';
 	$sql .= '`modified_when` = '.$modified_when.', ';
 	$sql .= '`modified_by` = '.$modified_by.' ';
+	$sql .= " , `name`  = '',  `code` = '', `description` = '',`comments` = '' ";
+	
 	$database->query($sql);
 
 	// Get the id
