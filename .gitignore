@@ -1,7 +1,8 @@
 # Ignore configuration files that may contain sensitive information.
-config.php
+/config.php
 *.*~
 *~
 
 # Ignore paths that contain user-generated content.
 media/*
+modules/libraryadmin/presets/tmp*.js
