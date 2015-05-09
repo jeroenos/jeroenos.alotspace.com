@@ -429,7 +429,7 @@ if (!class_exists('wbTemplate', false))
                        : $this->_config['workdir'].'/'.$this->_config['cachedir']
                        ;
             // store compiled template
-            $fh = fopen( $file_path.'/'.$cache_file, 'w');
+            $fh = fopen( $file_path . $cache_file, 'w');
             fwrite($fh, '<' . '?php' . "\n");
             fwrite($fh, '    $fillings = $this->data;' . "\n");
             fwrite($fh, '    $globals  = $this->globals;' . "\n");
@@ -442,11 +442,11 @@ if (!class_exists('wbTemplate', false))
             $this->globals = self::$_globals;
 
             ob_start();
-            include $file_path.'/'.$cache_file;
+            include $file_path . $cache_file;
             $output = ob_get_clean();
 
             if (!$cache)
-                unlink($file_path.'/'.$cache_file);
+                unlink($file_path . $cache_file);
 
             return $output;
 
