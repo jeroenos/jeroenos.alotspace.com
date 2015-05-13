@@ -1,4 +1,5 @@
 <?php
+include (WB_PATH.'/modules/wbstats/count.php');
 
 $breadcrumbstart = '<a href="'.WB_URL.'">Start</a> ';
 $moredetails = '<h3>More Details:</h3>';
