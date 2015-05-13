@@ -123,7 +123,7 @@ if ( isset($_GET['print']) AND $_GET['print'] == 1 ) {
 			<img class="headerpic" src="<?php echo TEMPLATE_DIR; ?>/images/header.png" alt="" />
 			<div class="infobox">
 				<h1><a class="logo" href="<?php echo WB_URL; ?>"><?php echo WEBSITE_TITLE; ?></a></h1><h2><?php echo PAGE_TITLE; ?></h2>
-				<h3><?php page_description(); ?></h3>
+			<!-- 	<h3><?php page_description(); ?></h3>  -->
 			</div>
 			<div style="clear:both;"></div>
 		</div>
